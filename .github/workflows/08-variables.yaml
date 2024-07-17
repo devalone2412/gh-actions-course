@@ -2,7 +2,6 @@ name: 08 - Using Variables
 env:
   WORKFLOW_VAR: "I am a workflow env var"
   OVERWRITTEN: "I will be overwritten"
-  UNDEFINED_VAR_WITH_DEFAULT: ${{vars.UNDEFINED_VAR || 'default value'}}
 on:
   workflow_dispatch:
 
@@ -48,4 +47,4 @@ jobs:
     steps:
       - name: Print Undefined Variables
         run: |
-          echo "Org var: ${{env.UNDEFINED_VAR_WITH_DEFAULT}}"
+          echo "Org var: ${{vars.UNDEFINED_VAR || 'default value'}}"
