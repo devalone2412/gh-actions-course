@@ -1,35 +1,12 @@
 name: 09 - Using Functions
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
-      - name: Print PR title
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          echo "PR title: ${{github.event.pull_request.title}}"
-      - name: Print PR labels
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          cat << EOF
-          ${{ toJson(github.event.pull_request.labels) }}
-          EOF
-      - name: Bug step
-        if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix') }}
-        run: |
-          echo "I am a bug fix"
-      - name: Sleep for 20 seconds
-        run: |
-          echo "Sleeping for 20 seconds"
-          sleep 20
-      - name: Failing step
-        run: |
-          echo "This step will fail"
-          exit 1
       - name: I will be skipped
         if: ${{ success() }}
         run: |
