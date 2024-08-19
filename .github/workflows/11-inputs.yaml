@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Build
         run: |
-          echo "Building from tag <retrieve the value of the tag input here>"
+          echo "Building from tag {{ inputs.tag }}"
   deploy:
     runs-on: ubuntu-latest
     if: success() && !inputs.dry-run
