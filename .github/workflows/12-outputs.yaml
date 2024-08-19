@@ -11,13 +11,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      build-status: ${{ steps.build.outputs.status }}
     steps:
       - name: Print GITHUB_OUTPUT path
         run: |
           echo ${{ env.GITHUB_OUTPUT }}
       - name: Build
-        outputs:
-          build-status: ${{ steps.build.outputs.status }}
         id: build
         run: |
           echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT"
