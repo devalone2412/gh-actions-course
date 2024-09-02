@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: Print GITHUB_OUTPUT path
         run: |
-          echo ${{ env.GITHUB_OUTPUT }}
+          echo "$GITHUB_OUTPUT"
       - name: Build
         id: build
         run: |
-          echo "${{ env.GITHUB_OUTPUT }}"
+          echo "$GITHUB_OUTPUT"
           echo "status=${{ inputs.build-status }}" >> "$GITHUB_OUTPUT"
   deploy:
     runs-on: ubuntu-latest
